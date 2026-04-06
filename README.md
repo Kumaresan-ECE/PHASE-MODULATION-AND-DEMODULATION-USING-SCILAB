@@ -69,18 +69,73 @@ Demodulated signal
 
 PROCEDURE
 
-Refer to the algorithm and write the SCILAB code.
-Open SCILAB software.
-Create a new script file.
-Enter the program and save it.
-Execute the code.
-Debug errors if any and re-run.
-Observe the generated waveforms.
+1.Refer to the algorithm and write the SCILAB code.
 
-MODEL GRAPHS
+2.Open SCILAB software.
 
-TABULATIONS
+3.Create a new script file.
 
-CALCULATIONS
+4.Enter the program and save it.
 
-RESULT
+5.Execute the code.
+
+6.Debug errors if any and re-run.
+
+7.Observe the generated waveforms.
+
+PROGRAM :
+~~~
+clc;
+clear;
+close;
+
+Ac = 14.5;          
+Am = 29;    
+Fc = 5260;        
+Fm = 526;         
+Fs = 52600;      
+kp = %pi/4;       
+
+t = 0:1/Fs:2/Fm;  
+
+E1 = Am * sin(2*%pi*Fm*t);
+subplot(3,1,1);
+plot(t, E1);
+xlabel("Time (s)");
+ylabel("Amplitude");
+title("Message Signal");
+
+E2 = Ac * sin(2*%pi*Fc*t);
+subplot(3,1,2);
+plot(t, E2);
+xlabel("Time (s)");
+ylabel("Amplitude");
+title("Carrier Signal");
+
+
+E3 = Ac * sin(2*%pi*Fc*t + kp*E1);
+subplot(3,1,3);
+plot(t, E3);
+xlabel("Time (s)");
+ylabel("Amplitude");
+title("Phase Modulated Signal");
+
+xgrid();
+~~~
+
+MODEL GRAPHS :
+
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/2aaee069-8ee3-4bec-94e2-c6139d98f9e2" />
+
+
+TABULATIONS :
+
+<img width="756" height="1280" alt="image" src="https://github.com/user-attachments/assets/ae6c47ac-3be6-41e6-98d4-206f01f05473" />
+
+
+
+
+RESULT :
+
+<img width="866" height="1600" alt="image" src="https://github.com/user-attachments/assets/a76033a2-2115-4590-a11e-0c27d6a5bb4d" />
+
